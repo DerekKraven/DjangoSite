@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <style type="text/css">
+   TABLE {
+    background: maroon; /* Цвет фона таблицы */
+    color: white; /* Цвет текста */
+   }
+   TD {
+    background: #acacb1; /* Цвет фона ячеек */
+   }
+  </style>
+</head>
+<body>
+<h1>Университет</h1>
+<a href="{% url 'registration' %}">Регистрация</a>
+<a href="{% url 'authorization' %}">Авторизация</a>
+<h2>Студенты</h2>
+<a href="student/add">Добавить студента</a>
+<table>
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Дата рождения</th>
+        <th>Серия паспорта</th>
+        <th>Номер паспорта</th>
+        <th>Группа</th>
+    </tr>
+    {% for item in students %}
+    <tr>
+        <td>{{ item.last_name }}</td>
+        <td>{{ item.first_name }}</td>
+        <td>{{ item.patronymic }}</td>
+        <td>{{ item.date_of_birth }}</td>
+        <td>{{ item.series }}</td>
+        <td>{{ item.number }}</td>
+        <td>{{ item.group_name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Группы</h2>
+<a href="group/add">Добавить группу</a>
+<table>
+    <tr>
+        <th>Наименование</th>
+        <th>Количество студентов</th>
+    </tr>
+    {% for item in groups %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.number_of_students }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
